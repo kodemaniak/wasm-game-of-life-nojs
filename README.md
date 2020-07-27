@@ -131,3 +131,9 @@ Cargo.lock
 /pkg
 ```
 
+Then add everything to git and commit:
+
+```
+git add -A
+git ci -m 'Initial commit.'
+```
