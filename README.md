@@ -100,7 +100,7 @@ Create `index.html` with following contents:
 <body>
   <noscript>This page contains webassembly and javascript content, please enable javascript in your browser.</noscript>
   <script type="module">
-
+    import init from './pkg/wasm_game_of_life_nojs.js';
     init();
   </script>
 </body>
@@ -136,4 +136,32 @@ Then add everything to git and commit:
 ```
 git add -A
 git ci -m 'Initial commit.'
+```
+
+Create the file `src/universe.rs` with the contents. Add `mod universe;` after the `use` statements in `srx/lib.rs`.
+
+Update the `run()` method in `src/lib.rs`.
+
+In `Cargo.toml` update the `web-sys` dependency with:
+
+```TOML
+[dependencies.web-sys]
+version = "0.3.4"
+features = [
+  'Document',
+  'Element',
+  'HtmlElement',
+  'HtmlCanvasElement',
+  'CanvasRenderingContext2d',
+  'Node',
+  'Window',
+  'console',
+]
+```
+
+Further add
+
+```TOML
+[features]
+default = ["console_error_panic_hook"]
 ```
